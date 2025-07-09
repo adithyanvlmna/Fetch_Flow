@@ -1,0 +1,1 @@
+enum ApiCallState{loadiang,success,error,noState}
