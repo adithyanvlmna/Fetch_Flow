@@ -1,8 +1,6 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:fetch_flow/core/app_theme/app_colors.dart';
 import 'package:fetch_flow/core/app_theme/app_text_styles.dart';
-import 'package:fetch_flow/core/utils/api_url.dart';
-import 'package:fetch_flow/core/utils/app_size.dart';
 import 'package:fetch_flow/core/utils/enum.dart';
 import 'package:fetch_flow/core/utils/internet_checker.dart';
 import 'package:fetch_flow/providers/items_list_provider.dart';
@@ -121,9 +119,7 @@ Widget build(BuildContext context) {
                                       context,
                                       ProductView.routeName,
                                     );
-                                    provider.getProductDetails(
-                                      product.id.toString(),
-                                    );
+                                 
                                   },
                                   image: product.thumbnail,
                                   title: product.title,

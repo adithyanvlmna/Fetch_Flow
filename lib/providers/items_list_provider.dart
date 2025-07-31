@@ -26,35 +26,37 @@ class ItemsListProvider extends ChangeNotifier {
   Future<void> getProductsFromList() async {
     setApiState(ApiCallState.loadiang);
     isLoad = true;
-    final String url = (ApiUrl.baseUrl + ApiUrl.loadProducts).trim();
+    final String url = (ApiUrl.baseUrl + ApiUrl.loadItems).trim();
+    print(url);
 
-    try {
-      final response = await http.get(Uri.parse(url));
+    // try {
+    final response = await http.get(Uri.parse(url));
 
-      if (response.statusCode == 200) {
-        isLoad = false;
-        final data = json.decode(response.body);
-
-        item =
-            (data['products'] as List)
-                .map((productJson) => Product.fromJson(productJson))
-                .toList();
-        setApiState(ApiCallState.success);
-        notifyListeners();
-      } else {
-        setApiState(ApiCallState.error);
-        isLoad = false;
-        print('Failed to load products. Status code: ${response.statusCode}');
-      }
-    } catch (e) {
+    if (response.statusCode == 200) {
+      isLoad = false;
+      final data = json.decode(response.body);
+      print(data);
+      item =
+          (data['products'] as List)
+              .map((productJson) => Product.fromJson(productJson))
+              .toList();
+      setApiState(ApiCallState.success);
+      notifyListeners();
+    } else {
       setApiState(ApiCallState.error);
       isLoad = false;
-      print('Error fetching products: $e');
+      print('Failed to load products. Status code: ${response.statusCode}');
     }
+    // } catch (e) {
+    //   setApiState(ApiCallState.error);
+    //   isLoad = false;
+    //   print('Error fetching products: $e');
+    // }
   }
-  Future<void> getProductDetails(String id) async {
-    String url = (ApiUrl.baseUrl + ApiUrl.loadProductWithid(id: id)).trim();
-    final response = await http.get(Uri.parse(url));
-    print(response.body);
-  }
+
+  // Future<void> getProductDetails(String id) async {
+  //   String url = (ApiUrl.baseUrl + ApiUrl.loadProductWithid(id: id)).trim();
+  //   final response = await http.get(Uri.parse(url));
+  //   print(response.body);
+  // }
 }

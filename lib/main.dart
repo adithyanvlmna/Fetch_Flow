@@ -1,10 +1,8 @@
 import 'package:connectivity_wrapper/connectivity_wrapper.dart';
 import 'package:fetch_flow/providers/items_list_provider.dart';
 import 'package:fetch_flow/routes.dart';
-import 'package:fetch_flow/view/home_view.dart';
-import 'package:fetch_flow/view/product_view.dart';
+
 import 'package:fetch_flow/view/splash_screen.dart';
-import 'package:fetch_flow/view/update_view.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
