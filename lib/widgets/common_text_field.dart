@@ -58,7 +58,7 @@ class _CommonTextFieldState extends State<CommonTextField> {
     super.initState();
     _focusNode = FocusNode();
     _focusNode.addListener(() {
-      setState(() {}); // Refresh to change label/icon color on focus
+      setState(() {}); 
     });
   }
 
